@@ -1,0 +1,17 @@
+.wrapper {
+  counter-reset: cps;
+}
+
+span::after {
+  counter-increment: cps;
+  content: counter(cps);
+}
+
+span {
+  display: inline-block;
+  width: 50%;
+}
+
+.action-bar {
+  float: right;
+}

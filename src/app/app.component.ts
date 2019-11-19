@@ -22,7 +22,7 @@ export class AppComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: "250px",
+      width: "550px",
       data: { name: this.name, animal: this.animal }
     });
 
@@ -35,7 +35,8 @@ export class AppComponent {
 
 @Component({
   selector: "dialog-overview-example-dialog",
-  templateUrl: "dialog-overview-example-dialog.html"
+  templateUrl: "dialog-overview-example-dialog.html",
+  styleUrls: ["./dialog-overview-example-dialog.css"]
 })
 export class DialogOverviewExampleDialog {
   constructor(
