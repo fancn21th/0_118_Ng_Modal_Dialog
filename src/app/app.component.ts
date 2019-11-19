@@ -15,7 +15,7 @@ export class AppComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CustomPropertyBindingComponent, {
-      width: "550px",
+      width: "auto",
       data: {}
     });
 

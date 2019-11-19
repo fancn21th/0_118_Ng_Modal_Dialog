@@ -1,6 +1,10 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
-import {  MatDialogRef } from "@angular/material";
+import { Component } from "@angular/core";
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem
+} from "@angular/cdk/drag-drop";
+import { MatDialogRef } from "@angular/material";
 
 @Component({
   selector: "custom-property-binding",
@@ -8,24 +12,37 @@ import {  MatDialogRef } from "@angular/material";
   styleUrls: ["./custom-property-binding.component.css"]
 })
 export class CustomPropertyBindingComponent {
-  constructor(public dialogRef: MatDialogRef<CustomPropertyBindingComponent>) {}
+  constructor(public dialogRef: MatDialogRef<CustomPropertyBindingComponent>) {
+    for (let i = 1; i <= 10; i++) {
+      this.cps.push("custom property name");
+    }
+    for (let i = 1; i <= 10; i++) {
+      this.tags.push("tag name");
+    }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  movies = [
-    "Episode I - The Phantom Menace",
-    "Episode II - Attack of the Clones",
-    "Episode III - Revenge of the Sith",
-    "Episode IV - A New Hope",
-    "Episode V - The Empire Strikes Back",
-    "Episode VI - Return of the Jedi",
-    "Episode VII - The Force Awakens",
-    "Episode VIII - The Last Jedi"
-  ];
+  cps = [];
+
+  tags = [];
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }

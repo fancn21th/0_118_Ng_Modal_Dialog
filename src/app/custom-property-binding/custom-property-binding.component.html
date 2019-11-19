@@ -1,8 +1,35 @@
-<h1 mat-dialog-title>Custom Properties Data-Bindings</h1>
-<div mat-dialog-content class="wrapper">
-  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let movie of movies" cdkDrag>
-      {{ movie }}
+<h1 mat-dialog-title>Custom Property/Tag DataBinding</h1>
+<div mat-dialog-content class="container">
+  <div class="example-container col-left">
+    <h2>Custom Property</h2>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="cps"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box cp-list" *ngFor="let item of cps" cdkDrag>
+        <span>{{ item }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="example-container col-right">
+    <h2>Tag</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="tags"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box tag-list" *ngFor="let item of tags" cdkDrag>
+        <span>{{ item }}</span>
+      </div>
     </div>
   </div>
 </div>
