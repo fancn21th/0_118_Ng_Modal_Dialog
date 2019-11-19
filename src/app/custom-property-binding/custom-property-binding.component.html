@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Custom Properties Data-Bindings</h1>
+<div mat-dialog-content class="wrapper">
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+      {{ movie }}
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="action-bar">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button cdkFocusInitial>
+    Done
+  </button>
+</div>

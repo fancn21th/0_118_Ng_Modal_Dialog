@@ -1,10 +1,6 @@
-import { Component, Inject } from "@angular/core";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+import { Component } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { CustomPropertyBindingComponent } from "./custom-property-binding/custom-property-binding.component";
 
 /**
  * @title Dialog Overview
@@ -15,36 +11,16 @@ export interface DialogData {
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  animal: string;
-  name: string;
-
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(CustomPropertyBindingComponent, {
       width: "550px",
-      data: { name: this.name, animal: this.animal }
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
-      this.animal = result;
     });
-  }
-}
-
-@Component({
-  selector: "dialog-overview-example-dialog",
-  templateUrl: "dialog-overview-example-dialog.html",
-  styleUrls: ["./dialog-overview-example-dialog.css"]
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }
