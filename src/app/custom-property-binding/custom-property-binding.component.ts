@@ -18,6 +18,7 @@ export class CustomPropertyBindingComponent {
   @Input() tags: any;
   private selectedTag: any = null;
   private selectedTagMetaData: any = [];
+  private name: string = "";
 
   constructor(public dialogRef: MatDialogRef<CustomPropertyBindingComponent>) {
     this.cps = cps;
