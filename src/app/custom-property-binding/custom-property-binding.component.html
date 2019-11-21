@@ -13,8 +13,11 @@
       (cdkDropListDropped)="drop($event)"
     >
       <!--  custom property item -->
-      <div class="example-box cp-list" *ngFor="let item of cps" cdkDrag>
-        {{ item.DisplayName }}
+      <div class="cp-box" *ngFor="let item of cps" cdkDrag>
+        <span>{{ item.DisplayName }}</span>
+        <div class="cp">
+          <span>{{ item.Value }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -29,7 +32,7 @@
       #doneList="cdkDropList"
       [cdkDropListData]="tags"
       [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
+      class="example-list example-list--fix"
       (cdkDropListDropped)="drop($event)"
     >
       <div
