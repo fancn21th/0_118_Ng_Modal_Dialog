@@ -65,7 +65,6 @@
 
 /* custom style */
 .container {
-  width: 100%;
   counter-reset: cps tags;
 }
 

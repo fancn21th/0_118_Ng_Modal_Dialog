@@ -27,7 +27,10 @@ export class CustomPropertyBindingComponent {
 
   onTagSelect(selectedTag: any): void {
     this.selectedTag = selectedTag;
-    this.selectedTagMetaData = this.convertTagMetaData(selectedTag.tagMetaData);
+    this.selectedTagMetaData = this.convertTagMetaData({
+      Value: selectedTag.fqn,
+      ...selectedTag.tagMetaData
+    });
   }
 
   onNoClick(): void {
