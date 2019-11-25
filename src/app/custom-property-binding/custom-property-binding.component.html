@@ -6,9 +6,9 @@
 
     <div
       cdkDropList
-      #todoList="cdkDropList"
+      #cpList="cdkDropList"
       [cdkDropListData]="cps"
-      [cdkDropListConnectedTo]="[doneList]"
+      [cdkDropListConnectedTo]="[tagMetadataList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
@@ -48,9 +48,9 @@
 
     <div
       cdkDropList
-      #doneList="cdkDropList"
+      #tagMetadataList="cdkDropList"
       [cdkDropListData]="selectedTagMetaData"
-      [cdkDropListConnectedTo]="[todoList]"
+      [cdkDropListConnectedTo]="[cpList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
@@ -79,5 +79,5 @@
 </div>
 <div mat-dialog-actions class="action-bar">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button cdkFocusInitial>Done</button>
+  <button mat-button cdkFocusInitial (click)="onDoneClick()">Done</button>
 </div>

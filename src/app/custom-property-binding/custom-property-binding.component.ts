@@ -1,10 +1,11 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Inject } from "@angular/core";
 import {
-  CdkDragDrop,
-  moveItemInArray,
-  copyArrayItem
+  CdkDragDrop
+  // moveItemInArray,
+  // copyArrayItem
 } from "@angular/cdk/drag-drop";
 import { MatDialogRef } from "@angular/material";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { cps } from "../mock/cps";
 import { tags } from "../mock/tags";
 
@@ -16,11 +17,16 @@ import { tags } from "../mock/tags";
 export class CustomPropertyBindingComponent {
   @Input() cps: any;
   @Input() tags: any;
-  private selectedTag: any = null;
-  private selectedTagMetaData: any = [];
-  private name: string;
+  public selectedTag: any = null;
+  public selectedTagMetaData: any = [];
+  public name: string;
+  public tagMetadataList: any;
 
-  constructor(public dialogRef: MatDialogRef<CustomPropertyBindingComponent>) {
+  constructor(
+    public dialogRef: MatDialogRef<CustomPropertyBindingComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.data = data;
     this.cps = cps;
     this.tags = tags;
   }
@@ -34,6 +40,11 @@ export class CustomPropertyBindingComponent {
   }
 
   onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onDoneClick() {
+    this.data.callback(this.cps);
     this.dialogRef.close();
   }
 
