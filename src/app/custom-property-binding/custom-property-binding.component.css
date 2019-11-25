@@ -73,6 +73,7 @@
   float: right;
 }
 
+/* layout */
 .col-1-3 {
   width: auto;
 }
@@ -80,6 +81,7 @@
 .selected-tag {
 }
 
+/* tag metadata column & cp column */
 .tag-metadata,
 .cp {
   border: 1px solid #cccccc;
@@ -109,10 +111,17 @@
   bottom: 0;
 }
 
+.tag-metadata__type {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: red;
+}
+
 .tag-metadata-box,
 .cp-box,
 .tag-box {
-  padding: 20px 10px;
+  padding: 10px;
   color: rgba(0, 0, 0, 0.87);
   /* display: flex;
   flex-direction: row;
@@ -122,6 +131,10 @@
   cursor: move;
   background: white;
   font-size: 14px;
+}
+
+.cp__type {
+  color: red;
 }
 
 .cp-box > span {

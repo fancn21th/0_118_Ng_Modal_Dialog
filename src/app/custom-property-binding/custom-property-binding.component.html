@@ -16,7 +16,8 @@
       <div class="cp-box" *ngFor="let item of cps" cdkDrag>
         <span>{{ item.DisplayName }}</span>
         <div class="cp">
-          <span>{{ item.Value }}</span>
+          <span class="cp__value">{{ item.Value }}</span>
+          <span class="cp__type">{{ item.DataType }}</span>
         </div>
       </div>
     </div>
@@ -63,6 +64,7 @@
         <div class="tag-metadata">
           <span class="tag-metadata__key"> {{ item.key }}</span>
           <span class="tag-metadata__value"> {{ item.value }}</span>
+          <span class="tag-metadata__type"> {{ item.type }}</span>
           <!-- cdkDragHandle -->
           <div class="example-handle" cdkDragHandle>
             <svg width="24px" fill="currentColor" viewBox="0 0 24 24">

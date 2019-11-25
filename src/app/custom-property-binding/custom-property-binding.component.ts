@@ -74,7 +74,8 @@ export class CustomPropertyBindingComponent {
   private convertTagMetaData(tagMetaData: any): any {
     return Object.keys(tagMetaData).map(key => ({
       key,
-      value: tagMetaData[key]
+      value: tagMetaData[key],
+      type: typeof tagMetaData[key] || ""
     }));
   }
 }
