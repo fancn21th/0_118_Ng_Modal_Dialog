@@ -24,21 +24,16 @@
   <!--  tags -->
   <div class="example-container col-1-3">
     <h2>Tag</h2>
+
     <mat-form-field>
       <input matInput [(ngModel)]="name" placeholder="Filter tags" />
     </mat-form-field>
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="tags"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list example-list--fix"
-      (cdkDropListDropped)="drop($event)"
-    >
+
+    <div class="example-list example-list--fix">
+      <!--  tag item -->
       <div
         class="example-box"
         *ngFor="let item of tags"
-        cdkDrag
         (click)="onTagSelect(item)"
       >
         {{ item.displayName }}
@@ -54,11 +49,12 @@
     <div
       cdkDropList
       #doneList="cdkDropList"
-      [cdkDropListData]="tags"
+      [cdkDropListData]="selectedTagMetaData"
       [cdkDropListConnectedTo]="[todoList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
+      <!--  tag metadata item -->
       <div
         class="tag-metadata-box"
         *ngFor="let item of selectedTagMetaData"

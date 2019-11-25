@@ -39,19 +39,23 @@ export class CustomPropertyBindingComponent {
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+      // moveItemInArray(
+      //   event.container.data,
+      //   event.previousIndex,
+      //   event.currentIndex
+      // );
     } else {
-      copyArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-      // this.cps.splice(0, 1, event.previousContainer.data[event.previousIndex]);
+      // copyArrayItem(
+      //   event.previousContainer.data,
+      //   event.container.data,
+      //   event.previousIndex,
+      //   event.currentIndex
+      // );
+      const sourceData = event.previousContainer.data[
+        event.previousIndex
+      ] as any;
+      const targetData = event.container.data[event.currentIndex] as any;
+      targetData.Value = sourceData.value;
     }
   }
 

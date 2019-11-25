@@ -66,6 +66,7 @@
 /* custom style */
 .container {
   counter-reset: cps tags;
+  width: 850px;
 }
 
 .action-bar {
